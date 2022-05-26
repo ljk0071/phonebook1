@@ -259,14 +259,14 @@ public class PhoneDao {
 		return personList;
 	}
 
-	public int Update(int personId, String name, String hp, String company) {
+	public int Update(PersonVo personVo) {
 		try {
 			getConnection();
 			// 3. SQL문 준비 / 바인딩 / 실행
 
 			// SQL문 준비
 			String query = "";
-			query += "update perosn ";
+			query += "update person ";
 			query += "set name = ? ";
 			query += ",hp = ? ";
 			query += ",company = ? ";
@@ -274,10 +274,10 @@ public class PhoneDao {
 
 			// 바인딩
 			pstmt = conn.prepareStatement(query); // 문자열을 쿼리로 만들기
-			pstmt.setString(1, name);
-			pstmt.setString(2, hp);
-			pstmt.setString(3, company);
-			pstmt.setInt(4, personId);
+			pstmt.setString(1, personVo.name);
+			pstmt.setString(2, personVo.hp);
+			pstmt.setString(3, personVo.company);
+			pstmt.setInt(4, personVo.personId);
 
 			// 실행
 			count = pstmt.executeUpdate(); // 쿼리문 실행 -->리턴값으로 성공갯수

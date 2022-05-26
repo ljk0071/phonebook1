@@ -4,30 +4,23 @@
 <%@ page import="com.javaex.vo.PersonVo"  %>
 <%@ page import="java.util.List"  %>
 <% 
+	String id = request.getParameter("id");
 	String name = request.getParameter("name");
 	String hp = request.getParameter("hp");
 	String company = request.getParameter("company");
-	/*
-	System.out.println(name);
-	System.out.println(hp);
-	System.out.println(company);
-	*/
-	
-	//personvo만들 때 name hp company 넣어주고
-	//dao.insert에다가 personvo를 넣어준다
-	PersonVo personVo = new PersonVo(name, hp, company);
+
+	PersonVo personVo = new PersonVo(Integer.parseInt(id), name, hp, company);
 	PhoneDao phonedao = new PhoneDao();
-	phonedao.Insert(personVo);
+	phonedao.Update(personVo);
 	
-	response.sendRedirect("./list.jsp");
+ 	response.sendRedirect("./list.jsp");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert</title>
+<title>Update</title>
 </head>
 <body>
-	
 </body>
 </html>

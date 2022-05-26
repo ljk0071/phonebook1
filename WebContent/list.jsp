@@ -35,6 +35,9 @@
 		<tr>
 			<td colspan=2><a href="http://localhost:8088/phonebook1/delete.jsp?id=<%=personList.get(i).personId %>">삭제</a></td>
 		</tr>
+		<tr>
+			<td colspan=2><a href="http://localhost:8088/phonebook1/updateform.jsp?id=<%=personList.get(i).personId %>">수정</a></td>
+		</tr>
 	</table>
 	<br>
 	<%} %>
