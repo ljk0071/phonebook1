@@ -17,6 +17,9 @@ public class PersonVo {
 		this.hp = hp;
 		this.company = company;
 	}
+	public PersonVo() {
+		
+	}
 	
 	public void setPersonId(int personId) {
 		this.personId = personId;

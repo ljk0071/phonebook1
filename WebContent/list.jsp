@@ -4,7 +4,7 @@
 <%@	page import="java.util.List" %>
 <%
 	PhoneDao phoneDao = new PhoneDao();
-	List<PersonVo> personList = phoneDao.Select();
+	List<PersonVo> personList = phoneDao.SelectAll();
 %>
 <!DOCTYPE html>
 <html>
@@ -33,10 +33,8 @@
 			<td><%=personList.get(i).company %></td>
 		</tr>
 		<tr>
-			<td colspan=2><a href="http://localhost:8088/phonebook1/delete.jsp?id=<%=personList.get(i).personId %>">삭제</a></td>
-		</tr>
-		<tr>
-			<td colspan=2><a href="http://localhost:8088/phonebook1/updateform.jsp?id=<%=personList.get(i).personId %>">수정</a></td>
+			<td><a href="./updateform.jsp?id=<%=personList.get(i).personId %>" target="blank">수정</a></td>
+			<td><a href="./delete.jsp?id=<%=personList.get(i).personId %>">삭제</a></td>
 		</tr>
 	</table>
 	<br>

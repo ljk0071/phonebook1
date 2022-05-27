@@ -229,7 +229,7 @@ public class PhoneDao {
 		return count;
 	}
 
-	public List<PersonVo> Select() {
+	public List<PersonVo> SelectAll() {
 		List<PersonVo> personList = new ArrayList<PersonVo>();
 		try {
 			getConnection();
@@ -257,6 +257,36 @@ public class PhoneDao {
 		}
 		Close();
 		return personList;
+	}
+	
+	public PersonVo Select(int personId) {
+		PersonVo personVo = new PersonVo();
+		try {
+			getConnection();
+
+			String query = "";
+			query += "select ";
+			query += "person_id, name, hp, company ";
+			query += "from person ";
+			query += "where person_id = ? ";
+			query += "order by person_id ";
+
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, personId);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int personId2 = rs.getInt(1);
+				String name = rs.getString(2);
+				String hp = rs.getString(3);
+				String company = rs.getString(4);
+				personVo = new PersonVo(personId2, name, hp, company);
+			}
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
+		Close();
+		return personVo;
 	}
 
 	public int Update(PersonVo personVo) {
